@@ -1,6 +1,6 @@
 # Tweets-Scrapper
 
-This script has helped me to scrap more than 30K+ tweets from more that 40 authors. The script is writter such that you only have to give it a list of tweeter handles and output csv file path and it'll download all the tweets, process them and save them to a csv file without any hassle. You can checkout the dataset [here](https://github.com/Hsankesara/The-Tweets-of-Wisdom/blob/master/A%20comprehensive%20study%20of%20wisdom.ipynb) on Gihub and [her](https://www.kaggle.com/hsankesara/the-tweets-of-wisdom) on Kaggle. Also, I have did a comprehensive data analysis which you can find [here](https://www.kaggle.com/hsankesara/a-comprehensive-study-of-wisdom).
+This script has helped me to scrap more than 30K+ tweets from more that 40 authors. The script is writter such that you only have to give it a list of tweeter handles and output csv file path and it'll download all the tweets, process them and save them to a csv file without any hassle. You can checkout the dataset [here](https://github.com/Hsankesara/The-Tweets-of-Wisdom/blob/master/A%20comprehensive%20study%20of%20wisdom.ipynb) on Gihub and [her](https://www.kaggle.com/hsankesara/the-tweets-of-wisdom) on Kaggle. Also, I have did a comprehensive data analysis which you can find [here](https://www.kaggle.com/hsankesara/a-comprehensive-study-of-wisdom). You can also checkout the jupyter notebook I have used to scrap 30K+ tweets [here](The_Wisdom_Scrapper.ipynb).
 
 ## How the script works
 
