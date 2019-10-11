@@ -123,7 +123,7 @@ def main():
     accounts = ['naval']
     all_tweets = []
     for account in accounts:
-        all_tweets += fetch_all_tweets(account, api)
+        all_tweets += fetch_all_tweets(account, api, accounts)
     df = pd.DataFrame.from_records([s.__repr__() for s in all_tweets])
     df.to_csv('./tweets.csv', index=False)
 
