@@ -28,6 +28,7 @@ cp cred.json.sample cred.json
 ```
 
 4. Get Twitter credentials and write them in `cred.json` file. You can follow [this](https://www.slickremix.com/docs/how-to-get-api-keys-and-tokens-for-twitter/) to get your access tokens.
+   Now update the `cred.json` file with the tokens you've received from Twitter.
 
 5. Write the Twitter handle of the accounts you want to scrap in _authors.txt_ in **newline seperated format**.
 

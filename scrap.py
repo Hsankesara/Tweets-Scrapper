@@ -4,6 +4,7 @@ import csv
 import json
 import re
 import time
+import sys
 
 
 class Tweet(object):
@@ -106,7 +107,20 @@ def fetch_all_tweets(screen_name, api, accounts):
     return all_objects
 
 
+def get_accounts(path):
+    if path == "":
+        sys.exit("Please give the correct authors file")
+    accounts = []
+    with open(path) as fp:
+        for line in fp:
+            accounts.append(line.strip())
+    return accounts
+
+
 def main():
+    AUTHORS_FILE_PATH = ""
+    OUTPUT_PATH = "tweets.csv"
+
     with open('cred.json') as json_file:
         data = json.load(json_file)
 
@@ -120,12 +134,23 @@ def main():
     auth.set_access_token(access_key, access_secret)
     api = tweepy.API(auth)
     # accounts=['naval','Via_Benjamin','RortyWitt','EdLatimore','StoopToRise','AymPlanet','Wealth_Theory','alanhliang','TradingNirvana','modestproposal1','razyPolymath','SentientBonobo','webdevMason','stoic_dilettant','AJA_Cortes','martyrmade','PresentWitness_','millstoic','z3nblack','TheChuChu_','orangebook_','yawyr_vk','Noahpinion','ThomasSowell','LifeMathMoney','DejaRu22','lawsofaurelius','48_quotes','shl','cryptoseneca','paulg','TheCreativeFury','Kpaxs','TheAncientSage','DeeperThrill','mmay3r','DrRalphNap','TheStoicEmperor','uncannyinsights']
-    accounts = ['naval']
+
+    if len(sys.argv) < 2:
+        sys.exit("Atleast one arguments are required. First one represents the authors whose tweets has to be scrapped. The second one is the path of the output csv file where the scrapped tweets should be stored. Default for second is tweets.csv")
+    elif len(sys.argv) > 3:
+        sys.exit("Atmost two arguments are required. First one represents the authors whose tweets has to be scrapped. The second one is the path of the output csv file where the scrapped tweets should be stored. Default for second is tweets.csv")
+    elif len(sys.argv) == 2:
+        AUTHORS_FILE_PATH = sys.argv[1]
+    else:
+        AUTHORS_FILE_PATH = sys.argv[1]
+        OUTPUT_PATH = sys.argv[2]
+
+    accounts = get_accounts(AUTHORS_FILE_PATH)
     all_tweets = []
     for account in accounts:
         all_tweets += fetch_all_tweets(account, api, accounts)
     df = pd.DataFrame.from_records([s.__repr__() for s in all_tweets])
-    df.to_csv('./tweets.csv', index=False)
+    df.to_csv(OUTPUT_PATH, index=False)
 
 
 if __name__ == "__main__":

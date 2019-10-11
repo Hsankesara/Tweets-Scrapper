@@ -106,3 +106,4 @@ venv.bak/
 # Credentials
 cred.json
 .vscode
+tweets.csv
